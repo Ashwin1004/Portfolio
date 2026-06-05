@@ -1,0 +1,320 @@
+/* ==========================================================================
+   RESPONSIVE.CSS - Media Queries & Layout Adaptations
+   ========================================================================== */
+
+/* 1. DESKTOP / LARGE LAPTOPS (Down to 1200px) */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 40px;
+    }
+}
+
+/* 2. TABLETS & SMALL LAPTOPS (Down to 992px) */
+@media (max-width: 992px) {
+    .header-container {
+        padding: 0 30px !important;
+    }
+    
+    .nav-links {
+        gap: 25px;
+    }
+
+    .about-large-text {
+        font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    }
+
+    .skills-universe {
+        height: 600px;
+    }
+
+    .skill-node {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+}
+
+/* 3. PHONES & PORTRAIT TABLETS (Down to 768px) */
+@media (max-width: 768px) {
+    :root {
+        --header-height: 70px;
+    }
+
+    /* Disable custom cursor entirely on mobile / touch / trackpad coarse devices */
+    .custom-cursor,
+    #customCursor {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    body {
+        cursor: auto !important;
+    }
+
+    a, button, .btn, .nav-link, .magnetic {
+        cursor: pointer !important;
+    }
+
+    /* Typography scale-down */
+    p {
+        font-size: 0.95rem;
+    }
+
+    .section-title {
+        font-size: clamp(1.8rem, 5vw, 2.4rem);
+    }
+
+    .hero-title {
+        font-size: clamp(2.0rem, 7vw, 3.2rem);
+        letter-spacing: -1px;
+    }
+
+    .hero-tagline {
+        font-size: 1.25rem;
+    }
+
+    .hero-desc {
+        font-size: 0.95rem;
+    }
+
+    .about-large-text {
+        font-size: 1.35rem;
+        line-height: 1.4;
+        margin-bottom: 25px;
+    }
+
+    .about-sub-text {
+        font-size: 0.95rem;
+    }
+
+    /* Grid systems collapsed */
+    .about-grid, .about-layout, .contact-layout {
+        grid-template-columns: 1fr !important;
+        gap: 35px;
+    }
+
+    .about-details-column {
+        gap: 20px;
+    }
+
+    /* Navigation / Hamburger actions */
+    .main-nav, .header-cta, .btn-header-cta {
+        display: none !important; /* hide standard links */
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+        position: relative;
+    }
+
+    .mobile-menu-btn span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: var(--text-primary);
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        transform: translateY(-4px) rotate(-45deg);
+    }
+
+    .mobile-nav-overlay {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-100%);
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-nav-overlay.active {
+        transform: translateY(0);
+    }
+
+    .mobile-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 0;
+    }
+
+    .mobile-link {
+        font-family: var(--font-heading);
+        font-size: 1.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        transition: color 0.3s ease;
+    }
+
+    .mobile-link:hover,
+    .mobile-link:active {
+        color: var(--accent);
+    }
+
+    /* Skills Sphere Degradation (Flexible Badge Pills Layout) */
+    .skills-universe {
+        height: auto;
+        min-height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        padding: 40px 20px;
+        position: relative;
+    }
+
+    .skills-connector-canvas-container,
+    .skills-center {
+        display: none !important; /* Hide circular items on mobile viewports */
+    }
+
+    .skill-node {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 8px 16px;
+        border-radius: 30px;
+        margin: 0 !important;
+        opacity: 1 !important;
+    }
+
+    .skill-icon-wrapper {
+        width: 28px;
+        height: 28px;
+        border-width: 1px;
+    }
+
+    .skill-icon-wrapper i {
+        font-size: 0.8rem;
+        width: 14px;
+        height: 14px;
+    }
+
+    .skill-name {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    /* Timelines Mobile Adapters (Projects & Achievements Left-Aligned) */
+    .timeline-line-wrapper,
+    .project-timeline-line-wrapper {
+        left: 20px;
+        transform: none;
+    }
+
+    .timeline-node-dot,
+    .project-timeline-node-dot {
+        left: 20px !important;
+        top: 35px;
+    }
+
+    .timeline-event-content,
+    .project-timeline-event-content {
+        width: calc(100% - 40px) !important;
+        margin-left: 40px !important;
+        margin-right: 0 !important;
+        padding: 24px;
+    }
+
+    .timeline-events,
+    .project-timeline-events {
+        gap: 45px;
+    }
+
+    /* GitHub section adaptions */
+    .github-profile-card {
+        padding: 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .profile-stats {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .github-repos-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    /* Footer adjustments */
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* 4. ULTRA PORTRAIT SMALL (Down to 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .profile-stats {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .timeline-event-content,
+    .project-timeline-event-content {
+        padding: 20px;
+    }
+}

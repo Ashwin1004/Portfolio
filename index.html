@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashwin M S | Java Backend Engineer & AI Developer</title>
+    <meta name="description" content="Portfolio of Ashwin M S - Java Backend Engineer & AI Developer building scalable backend systems, AI-powered applications, and intelligent software.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- GSAP & Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Custom Interactive Cursor -->
+    <div class="custom-cursor" id="customCursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-circle">
+            <span class="cursor-text"></span>
+        </div>
+    </div>
+    
+    <!-- Glow Overlay following mouse -->
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <!-- Cinematic Systems Loader (Horizontal Progress Line) -->
+    <div class="loader-screen" id="loader">
+        <div class="loader-bg-pattern"></div>
+        <div class="loader-inner">
+            <div class="loader-title font-futuristic" id="loaderTitle">LOADING</div>
+            <div class="loader-line-container">
+                <div class="loader-line" id="loaderLine"></div>
+            </div>
+            <div class="loader-status" id="loaderStatus">Loading Backend Architecture...</div>
+        </div>
+    </div>
+
+    <!-- Fixed Header -->
+    <header class="main-header" id="mainHeader">
+        <div class="header-container container">
+            <div class="header-logo">
+                <span class="logo-text">AMS</span>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li>
+                        <a href="#about" class="nav-link clickable magnetic" data-strength="12">
+                            <span class="nav-link-inner">
+                                <span class="nav-link-text">About</span>
+                                <span class="nav-link-text-hover">About</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#projects" class="nav-link clickable magnetic" data-strength="12">
+                            <span class="nav-link-inner">
+                                <span class="nav-link-text">Projects</span>
+                                <span class="nav-link-text-hover">Projects</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#skills" class="nav-link clickable magnetic" data-strength="12">
+                            <span class="nav-link-inner">
+                                <span class="nav-link-text">Skills</span>
+                                <span class="nav-link-text-hover">Skills</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#achievements" class="nav-link clickable magnetic" data-strength="12">
+                            <span class="nav-link-inner">
+                                <span class="nav-link-text">Achievements</span>
+                                <span class="nav-link-text-hover">Achievements</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#github" class="nav-link clickable magnetic" data-strength="12">
+                            <span class="nav-link-inner">
+                                <span class="nav-link-text">GitHub</span>
+                                <span class="nav-link-text-hover">GitHub</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="nav-link clickable magnetic" data-strength="12">
+                            <span class="nav-link-inner">
+                                <span class="nav-link-text">Contact</span>
+                                <span class="nav-link-text-hover">Contact</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-buttons-group" style="display: flex; align-items: center; gap: 15px;">
+                <a href="assets/Ashwin_M_S_Resume.pdf" download class="btn btn-header-resume clickable magnetic" data-strength="15">
+                    <span>Resume</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download" style="width: 14px; height: 14px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                </a>
+                <a href="#contact" class="btn btn-header-cta clickable magnetic" data-strength="15">Get In Touch</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <ul class="mobile-links">
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#projects" class="mobile-link">Projects</a></li>
+            <li><a href="#skills" class="mobile-link">Skills</a></li>
+            <li><a href="#achievements" class="mobile-link">Achievements</a></li>
+            <li><a href="#github" class="mobile-link">GitHub</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Scrollable Body Content -->
+    <div class="scroll-container" id="scrollContainer">
+        
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-bg-canvas-wrapper">
+                <canvas id="particleCanvas"></canvas>
+            </div>
+            <div class="hero-container container">
+                <div class="hero-content">
+                    <h1 class="hero-title font-futuristic">
+                        <span>ASHWIN</span> <span>M S</span>
+                    </h1>
+                    <div class="hero-badges">
+                        <span class="hero-badge badge-cyan">Java Backend Engineer</span>
+                        <span class="hero-badge badge-purple">AI/ML Developer</span>
+                    </div>
+                    <h2 class="hero-subtitle">
+                        Building Intelligent Systems
+                    </h2>
+                    <p class="hero-tagline">
+                        Java Backend Engineer & AI/ML Developer crafting high-performance, intelligent software.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary magnetic" data-strength="15">
+                            <span>View Projects</span> <i data-lucide="arrow-up-right" class="btn-arrow"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-outline-glow magnetic" data-strength="20">
+                            <span>Contact Me</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll-prompt">
+                <div class="mouse-icon">
+                    <span class="mouse-dot"></span>
+                </div>
+                <span>Scroll Down</span>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="about-section" id="about">
+            <div class="container">
+                <h2 class="section-title font-futuristic">About Me</h2>
+                <div class="about-layout">
+                    <div class="about-content-left">
+                        <div class="about-large-text">
+                            I am a <span class="text-highlight-cyan">Java Backend Engineer</span> and <span class="text-highlight-purple">AI/ML Developer</span> building scalable systems and intelligent software.
+                        </div>
+                        <p class="about-paragraph">
+                            I design high-performance architectures, develop robust server-side applications, and build generative AI models. Currently pursuing my B.Tech in Computer and Communication Engineering, I bridge the gap between reliable engineering and modern machine learning.
+                        </p>
+                    </div>
+                    <div class="about-content-right">
+                        <div class="education-card">
+                            <span class="card-label label-cyan">Education</span>
+                            <h3>B.Tech Computer and Communication Engineering</h3>
+                            <p>Amrita School of Engineering (Graduation 2027)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Timeline Section -->
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <h2 class="section-title font-futuristic">Projects</h2>
+                
+                <div class="project-timeline-container">
+                    <div class="project-timeline-line-wrapper">
+                        <div class="project-timeline-line-bg"></div>
+                        <div id="projectTimelineProgress" class="project-timeline-line-progress"></div>
+                    </div>
+
+                    <div class="project-timeline-events">
+                        <!-- Project 1 (Flagship: DOCVOICE AI) -->
+                        <div class="project-timeline-event left">
+                            <div class="project-timeline-node-dot"></div>
+                            <div class="project-timeline-event-content">
+                                <div class="project-card">
+                                    <span class="project-index">DOCUMENT AI</span>
+                                    <h3 class="font-futuristic">DOCVOICE AI</h3>
+                                    <p class="project-subtitle">Image & PDF to Audio Conversion System</p>
+                                    <p class="project-desc">
+                                        AI-powered document accessibility platform that converts scanned images and PDF documents into structured text and natural-sounding audio. Uses OCR, document processing, and text-to-speech technologies to make content easier to consume.
+                                    </p>
+                                    <div class="project-pipeline-tag">
+                                        <strong>Visual Flow:</strong> Images/PDFs → OCR Processing → Text Extraction → Text-to-Speech → Audio Output
+                                    </div>
+                                    <div class="project-metrics">
+                                        <span class="metric-badge">Python</span>
+                                        <span class="metric-badge">Tesseract OCR</span>
+                                        <span class="metric-badge">PyPDF2</span>
+                                        <span class="metric-badge">gTTS</span>
+                                        <span class="metric-badge">Text-to-Speech</span>
+                                    </div>
+                                    <a href="https://github.com/Ashwin1004/DeltaHeadline" target="_blank" class="btn btn-project-cta clickable">
+                                        Explore Repository
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 (Parkinson's Disease Prediction) -->
+                        <div class="project-timeline-event right">
+                            <div class="project-timeline-node-dot"></div>
+                            <div class="project-timeline-event-content">
+                                <div class="project-card">
+                                    <span class="project-index">Healthcare AI</span>
+                                    <h3 class="font-futuristic">PARKINSON'S DISEASE PREDICTION</h3>
+                                    <p class="project-subtitle">Using EEG Signals, Voice Analysis & DaTSCAN Imaging</p>
+                                    <p class="project-desc">
+                                        AI-powered system for early Parkinson's disease prediction using multimodal neurological data and deep learning techniques.
+                                    </p>
+                                    <div class="project-pipeline-tag">
+                                        <strong>Visual Flow:</strong> EEG + Voice + DaTSCAN → Feature Extraction → CNN-LSTM → Prediction
+                                    </div>
+                                    <div class="project-metrics">
+                                        <span class="metric-badge font-futuristic" style="border-color: var(--accent); color: var(--accent);">88% Accuracy</span>
+                                        <span class="metric-badge">Python</span>
+                                        <span class="metric-badge">MATLAB</span>
+                                        <span class="metric-badge">CNN-LSTM</span>
+                                        <span class="metric-badge">EEG</span>
+                                        <span class="metric-badge">Voice Analysis</span>
+                                        <span class="metric-badge">DaTSCAN</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 (Huntington's Disease Detection) -->
+                        <div class="project-timeline-event left">
+                            <div class="project-timeline-node-dot"></div>
+                            <div class="project-timeline-event-content">
+                                <div class="project-card">
+                                    <span class="project-index">Healthcare AI</span>
+                                    <h3 class="font-futuristic">HUNTINGTON'S DISEASE DETECTION</h3>
+                                    <p class="project-subtitle">Early Detection using EEG Signal Processing</p>
+                                    <p class="project-desc">
+                                        Advanced deep learning system utilizing Convolutional Neural Networks and LSTMs (CNN-LSTM) to perform EEG signal filtering, artifact removal (ICA), and power spectral analysis for early Huntington's disease classification.
+                                    </p>
+                                    <div class="project-pipeline-tag">
+                                        <strong>Visual Flow:</strong> EEG Signals → Signal Filtering & ICA → CNN-LSTM Model → Prediction
+                                    </div>
+                                    <div class="project-metrics">
+                                        <span class="metric-badge font-futuristic" style="border-color: var(--accent); color: var(--accent);">88% Accuracy</span>
+                                        <span class="metric-badge">Python</span>
+                                        <span class="metric-badge">TensorFlow</span>
+                                        <span class="metric-badge">scipy</span>
+                                        <span class="metric-badge">CNN-LSTM</span>
+                                        <span class="metric-badge">EEG</span>
+                                        <span class="metric-badge">FastICA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 4 (AI Legal Intelligence Engine) -->
+                        <div class="project-timeline-event right">
+                            <div class="project-timeline-node-dot"></div>
+                            <div class="project-timeline-event-content">
+                                <div class="project-card">
+                                    <span class="project-index">Distributed Systems</span>
+                                    <h3 class="font-futuristic">AI Legal Intelligence Engine</h3>
+                                    <p class="project-subtitle">Distributed Legal AI platform</p>
+                                    <p class="project-desc">
+                                        Distributed legal document intelligence engine constructed to parse complex files, extract key clauses, and query clauses using low-latency vector databases.
+                                    </p>
+                                    <div class="project-pipeline-tag">
+                                        <strong>Visual Flow:</strong> PDF → Embedding → Vector Search → AI Response
+                                    </div>
+                                    <div class="project-metrics">
+                                        <span class="metric-badge">Spring Boot</span>
+                                        <span class="metric-badge">Kafka</span>
+                                        <span class="metric-badge">PostgreSQL</span>
+                                        <span class="metric-badge">pgvector</span>
+                                        <span class="metric-badge">RAG</span>
+                                        <span class="metric-badge">Python</span>
+                                    </div>
+                                    <a href="https://github.com/Ashwin1004/LexiMind-AI-Distributed-Legal-Contract-Intelligence-Engine" target="_blank" class="btn btn-project-cta clickable">
+                                        Explore Repository
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 5 (Driver Drowsiness Detection System) -->
+                        <div class="project-timeline-event left">
+                            <div class="project-timeline-node-dot"></div>
+                            <div class="project-timeline-event-content">
+                                <div class="project-card">
+                                    <span class="project-index">Computer Vision</span>
+                                    <h3 class="font-futuristic">Driver Drowsiness Detection</h3>
+                                    <p class="project-subtitle">Real-time computer vision & IoT solution</p>
+                                    <p class="project-desc">
+                                        Real-time fatigue detection system utilizing convolutional neural networks and Haar Cascade face-mesh mapping to calculate Eye Aspect Ratio (EAR) thresholds, triggering hardware ESP32 alarms.
+                                    </p>
+                                    <div class="project-pipeline-tag">
+                                        <strong>Visual Flow:</strong> Eye Tracking → Alert → ESP32 → Cloud Logging
+                                    </div>
+                                    <div class="project-metrics">
+                                        <span class="metric-badge">92% Detection Accuracy</span>
+                                        <span class="metric-badge">OpenCV</span>
+                                        <span class="metric-badge">ESP32</span>
+                                        <span class="metric-badge">Firebase</span>
+                                        <span class="metric-badge">Python</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 6 (AI Technical Documentation Generator) -->
+                        <div class="project-timeline-event right">
+                            <div class="project-timeline-node-dot"></div>
+                            <div class="project-timeline-event-content">
+                                <div class="project-card">
+                                    <span class="project-index">Developer Tooling</span>
+                                    <h3 class="font-futuristic">AI Technical Doc Generator</h3>
+                                    <p class="project-subtitle">Automated codebase summary engine</p>
+                                    <p class="project-desc">
+                                        Generates structured, production-ready technical documentations and API guides automatically from local repositories, ZIP files, and architecture diagrams.
+                                    </p>
+                                    <div class="project-pipeline-tag">
+                                        <strong>Visual Flow:</strong> Repository → AI Analysis → Documentation → PDF
+                                    </div>
+                                    <div class="project-metrics">
+                                        <span class="metric-badge">Spring Boot</span>
+                                        <span class="metric-badge">React</span>
+                                        <span class="metric-badge">OCR</span>
+                                        <span class="metric-badge">Generative AI</span>
+                                    </div>
+                                    <a href="https://github.com/Ashwin1004/Automated-Technical-Documentation-" target="_blank" class="btn btn-project-cta clickable">
+                                        Explore Repository
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Skills Web Section (Knowledge Sphere) -->
+        <section class="skills-section" id="skills">
+            <div class="container">
+                <h2 class="section-title font-futuristic">Knowledge Sphere</h2>
+                
+                <div class="skills-universe">
+                    <div class="skills-connector-canvas-container">
+                        <svg id="skillsConnectorSvg"></svg>
+                    </div>
+                    
+                    <div class="skills-center magnetic" data-strength="10">
+                        <span>ASHWIN</span>
+                    </div>
+
+                    <!-- Surrounding Technology Nodes (Dynamically positioned in a circle by animations.js) -->
+                    <div class="skill-node clickable" data-name="Java">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="coffee"></i>
+                        </div>
+                        <span class="skill-name">Java</span>
+                    </div>
+
+                    <div class="skill-node clickable" data-name="Spring Boot">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="leaf"></i>
+                        </div>
+                        <span class="skill-name">Spring Boot</span>
+                    </div>
+
+                    <div class="skill-node clickable" data-name="Kafka">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="share-2"></i>
+                        </div>
+                        <span class="skill-name">Kafka</span>
+                    </div>
+
+                    <div class="skill-node clickable" data-name="PostgreSQL">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="database"></i>
+                        </div>
+                        <span class="skill-name">PostgreSQL</span>
+                    </div>
+
+                    <div class="skill-node clickable" data-name="MySQL">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="database"></i>
+                        </div>
+                        <span class="skill-name">MySQL</span>
+                    </div>
+
+                    <div class="skill-node clickable" data-name="Docker">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="package"></i>
+                        </div>
+                        <span class="skill-name">Docker</span>
+                    </div>
+
+                    <div class="skill-node clickable" data-name="Firebase">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="flame"></i>
+                        </div>
+                        <span class="skill-name">Firebase</span>
+                    </div>
+
+                    <div class="skill-node clickable" data-name="Python">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="code"></i>
+                        </div>
+                        <span class="skill-name">Python</span>
+                    </div>
+
+                    <div class="skill-node clickable" data-name="Machine Learning">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="brain"></i>
+                        </div>
+                        <span class="skill-name">Machine Learning</span>
+                    </div>
+
+                    <div class="skill-node clickable" data-name="OpenCV">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="eye"></i>
+                        </div>
+                        <span class="skill-name">OpenCV</span>
+                    </div>
+
+                    <div class="skill-node clickable" data-name="React">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="globe"></i>
+                        </div>
+                        <span class="skill-name">React</span>
+                    </div>
+
+                    <div class="skill-node clickable" data-name="Git">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="git-branch"></i>
+                        </div>
+                        <span class="skill-name">Git</span>
+                    </div>
+
+                    <div class="skill-node clickable" data-name="Linux">
+                        <div class="skill-icon-wrapper">
+                            <i data-lucide="terminal"></i>
+                        </div>
+                        <span class="skill-name">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section class="achievements-section" id="achievements">
+            <div class="container">
+                <h2 class="section-title font-futuristic">Achievements</h2>
+
+                <div class="timeline-container">
+                    <div class="timeline-line-wrapper">
+                        <div class="timeline-line-bg"></div>
+                        <div id="timelineProgress" class="timeline-line-progress"></div>
+                    </div>
+
+                    <div class="timeline-events">
+                        <!-- Achievement 1 -->
+                        <div class="timeline-event left">
+                            <div class="timeline-node-dot"></div>
+                            <div class="timeline-event-content">
+                                <span class="timeline-date">2026</span>
+                                <h3>Technical Treasure Hunt — 1st Prize</h3>
+                                <p class="timeline-subtitle">Amrita Vishwa Vidyapeetham</p>
+                                <p class="timeline-desc">Won first prize (₹10,000 cash reward) in the Technical Treasure Hunt competition testing rapid debugging, terminal commands mastery, and systems coordination.</p>
+                            </div>
+                        </div>
+
+                        <!-- Achievement 2 -->
+                        <div class="timeline-event right">
+                            <div class="timeline-node-dot"></div>
+                            <div class="timeline-event-content">
+                                <span class="timeline-date">2024</span>
+                                <h3>IIT Madras Shaastra Finalist</h3>
+                                <p class="timeline-subtitle">Industrial AI Hackathon</p>
+                                <p class="timeline-desc">Selected among the top final teams out of numerous competitors nationwide. Designed and deployed an end-to-end intelligent predictive anomaly detection system for complex industrial telemetry datasets.</p>
+                            </div>
+                        </div>
+
+                        <!-- Achievement 3 -->
+                        <div class="timeline-event left">
+                            <div class="timeline-node-dot"></div>
+                            <div class="timeline-event-content">
+                                <span class="timeline-date">2024</span>
+                                <h3>Ingenium Hackathon</h3>
+                                <p class="timeline-subtitle">Secured 3rd Place</p>
+                                <p class="timeline-desc">Engineered and pitched an innovative system solution, securing third place out of 100+ participating engineering teams.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Repositories Grid Section (Open Source Contributions) -->
+        <section class="github-section" id="github">
+            <div class="container">
+                <h2 class="section-title font-futuristic">Open Source Contributions</h2>
+
+                <!-- Profile card mockup -->
+                <div class="github-profile-card">
+                    <div class="profile-info">
+                        <img src="https://avatars.githubusercontent.com/u/177143256?v=4" alt="Ashwin M S" class="profile-avatar" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\' viewBox=\'0 0 80 80\'><rect width=\'80\' height=\'80\' fill=\'%230a0a0c\'/><text x=\'50%\' y=\'55%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'22\' font-weight=\'bold\' fill=\'%2300E5FF\'>AMS</text></svg>';">
+                        <div class="profile-details">
+                            <h3>Ashwin M S</h3>
+                            <p>
+                                <a href="https://github.com/Ashwin1004" target="_blank" class="profile-link clickable">
+                                    @Ashwin1004 <i data-lucide="external-link"></i>
+                                </a>
+                            </p>
+                            <p class="profile-sub">B.Tech Computer and Communication Engineering<br>Student & Developer</p>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-val font-futuristic">7</span>
+                            <span class="stat-lbl">Repositories</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-val font-futuristic">0</span>
+                            <span class="stat-lbl">Stars Received</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-val font-futuristic">2027</span>
+                            <span class="stat-lbl">B.Tech Graduation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid wrapper loaded dynamically via main.js -->
+                <div class="github-repos-grid" id="githubReposGrid">
+                    <!-- Static Fallbacks -->
+                    <a href="https://github.com/Ashwin1004/DeltaHeadline" target="_blank" class="repo-card clickable">
+                        <div class="repo-header">
+                            <i data-lucide="folder" class="repo-icon"></i>
+                        </div>
+                        <h3 class="repo-name">DeltaHeadline</h3>
+                        <p class="repo-desc">No description provided. Click the title to explore this Image-to-PDF to Audio Converter repository on GitHub.</p>
+                        <div class="repo-footer">
+                            <span class="repo-lang"><span class="lang-color lang-python"></span>Python</span>
+                            <span class="repo-stars"><i data-lucide="star" class="star-icon"></i> 0</span>
+                            <span class="repo-forks"><i data-lucide="git-fork" class="fork-icon"></i> 0</span>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/Ashwin1004/LexiMind-AI-Distributed-Legal-Contract-Intelligence-Engine" target="_blank" class="repo-card clickable">
+                        <div class="repo-header">
+                            <i data-lucide="folder" class="repo-icon"></i>
+                        </div>
+                        <h3 class="repo-name">LexiMind-AI-Distributed-Legal-Contract-Intelligence-Engine</h3>
+                        <p class="repo-desc">No description provided. Click the title to explore this backend/AI intelligence repository on GitHub.</p>
+                        <div class="repo-footer">
+                            <span class="repo-lang"><span class="lang-color lang-java"></span>Java</span>
+                            <span class="repo-stars"><i data-lucide="star" class="star-icon"></i> 0</span>
+                            <span class="repo-forks"><i data-lucide="git-fork" class="fork-icon"></i> 0</span>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/Ashwin1004/Automated-Technical-Documentation-" target="_blank" class="repo-card clickable">
+                        <div class="repo-header">
+                            <i data-lucide="folder" class="repo-icon"></i>
+                        </div>
+                        <h3 class="repo-name">Automated-Technical-Documentation-</h3>
+                        <p class="repo-desc">No description provided. Click the title to explore this backend/AI intelligence repository on GitHub.</p>
+                        <div class="repo-footer">
+                            <span class="repo-lang"><span class="lang-color lang-java"></span>Java</span>
+                            <span class="repo-stars"><i data-lucide="star" class="star-icon"></i> 0</span>
+                            <span class="repo-forks"><i data-lucide="git-fork" class="fork-icon"></i> 0</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <h2 class="section-title font-futuristic">
+                    Let's Build <span class="text-highlight-cyan">Something</span> <span class="text-highlight-purple">Amazing.</span>
+                </h2>
+
+                <div class="contact-layout">
+                    <!-- Left Side: Cards -->
+                    <div class="contact-info-column">
+                        <span class="card-label label-purple">Connection Channels</span>
+                        <div class="contact-channels">
+                            <!-- Email -->
+                            <a href="mailto:ashwinms1004@gmail.com" class="channel-card clickable magnetic" data-strength="15">
+                                <div class="channel-details-horizontal">
+                                    <i data-lucide="mail" class="channel-icon"></i>
+                                    <span class="channel-title">Email</span>
+                                </div>
+                                <i data-lucide="arrow-right" class="channel-arrow"></i>
+                            </a>
+
+                            <!-- GitHub -->
+                            <a href="https://github.com/Ashwin1004" target="_blank" class="channel-card clickable magnetic" data-strength="15">
+                                <div class="channel-details-horizontal">
+                                    <i data-lucide="command" class="channel-icon"></i>
+                                    <span class="channel-title">GitHub</span>
+                                </div>
+                                <i data-lucide="arrow-right" class="channel-arrow"></i>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/ashwin-m-s-4546492b1/" target="_blank" class="channel-card clickable magnetic" data-strength="15">
+                                <div class="channel-details-horizontal">
+                                    <svg class="channel-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                                    <span class="channel-title">LinkedIn</span>
+                                </div>
+                                <i data-lucide="arrow-right" class="channel-arrow"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Anonymous Message Box -->
+                    <div class="contact-form-card anonymous-msg-card">
+                        <span class="card-label label-purple">Anonymous Line</span>
+                        <div class="anonymous-msg-content">
+                            <h3 class="anonymous-title font-futuristic">Send a direct message</h3>
+                            <p class="anonymous-subtitle">No name or email required. Just your thoughts.</p>
+                            
+                            <form id="anonymousMsgForm" onsubmit="event.preventDefault(); alert('Message sent anonymously! Thank you.'); this.reset();" class="anonymous-form">
+                                <div class="form-group anonymous-textarea-group">
+                                    <textarea id="anonMessage" placeholder="Type your message here..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn-anonymous-submit clickable magnetic" data-strength="10">
+                                    <span>Send Message</span>
+                                    <i data-lucide="arrow-right" class="submit-arrow"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo font-futuristic">
+                        ASHWIN M S
+                    </div>
+                    <div class="footer-socials">
+                        <a href="https://github.com/Ashwin1004" target="_blank" class="social-link clickable" aria-label="GitHub">
+                            <i data-lucide="github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ashwin-m-s-4546492b1/" target="_blank" class="social-link clickable" aria-label="LinkedIn">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Ashwin M S. All rights reserved.</p>
+                    <p>Designed for low-latency & system scale.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- UI/UX Scripts -->
+    <script src="js/scroll.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
