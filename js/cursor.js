@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupHoverSelectors('.main-nav .nav-link', 'hovering-nav', 'GO');
     
     // Primary / Accent buttons
-    setupHoverSelectors('.btn-primary, .btn-outline-glow, .skills-center', 'hovering-accent');
+    setupHoverSelectors('.btn-primary, .btn-outline-glow', 'hovering-accent');
     
     // Projects (standard)
     setupHoverSelectors('.project-item:not(.flagship)', 'hovering-project', 'VIEW CASE');
