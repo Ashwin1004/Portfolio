@@ -870,36 +870,6 @@ p {
     align-items: center;
 }
 
-.skills-connector-canvas-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-}
-
-#skillsConnectorSvg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.skills-web-line {
-    stroke: rgba(255, 255, 255, 0.06);
-    stroke-width: 1px;
-    stroke-dasharray: 4 6;
-    transition: var(--transition-smooth);
-}
-
-.skills-web-line.active {
-    stroke: var(--accent);
-    stroke-width: 1.5px;
-    stroke-dasharray: none;
-    filter: drop-shadow(0 0 6px var(--accent));
-}
-
 .skills-center {
     width: 140px;
     height: 140px;
@@ -913,16 +883,6 @@ p {
     cursor: default;
     box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.2);
     position: relative;
-}
-
-.skills-center::after {
-    content: '';
-    position: absolute;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 1px dashed rgba(var(--accent-rgb), 0.15);
-    animation: rotate 20s linear infinite;
 }
 
 .skills-center span {
@@ -943,14 +903,13 @@ p {
     align-items: center;
     gap: 8px;
     cursor: default;
+    width: 100px;
 }
 
 /* Subtle organic floating animation applied to the icons */
 @keyframes iconFloat {
     0% { transform: translateY(0) translateX(0); }
-    25% { transform: translateY(-5px) translateX(2px); }
-    50% { transform: translateY(0) translateX(-3px); }
-    75% { transform: translateY(5px) translateX(2px); }
+    50% { transform: translateY(-2px) translateX(1px); }
     100% { transform: translateY(0) translateX(0); }
 }
 
@@ -966,6 +925,7 @@ p {
     transition: var(--transition-smooth);
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     animation: iconFloat 6s ease-in-out infinite;
+    position: relative;
 }
 
 .skill-node:nth-child(2n) .skill-icon-wrapper { animation-delay: -1.2s; animation-duration: 7.5s; }
@@ -984,30 +944,109 @@ p {
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--text-secondary);
-    position: absolute;
-    bottom: -25px;
     white-space: nowrap;
     opacity: 0.7;
     transition: var(--transition-smooth);
+    text-align: center;
+    position: relative;
 }
 
-/* Skill Node Hover & Glow */
+.skill-node:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
 .skill-node:hover .skill-icon-wrapper {
     border-color: var(--accent);
-    transform: scale(1.15);
-    box-shadow: 0 0 25px rgba(var(--accent-rgb), 0.45);
-    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.2) 0%, rgba(10,10,12,0.95) 75%);
-    animation-play-state: paused;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.45);
+    background: rgba(10, 10, 12, 0.95);
+    animation: pulseGlow 1.8s infinite alternate ease-in-out;
 }
 
 .skill-node:hover .skill-icon-wrapper i {
     color: var(--text-primary);
-    filter: drop-shadow(0 0 5px var(--accent));
 }
 
 .skill-node:hover .skill-name {
     color: var(--text-primary);
     opacity: 1;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
+        border-color: rgba(0, 229, 255, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.65);
+        border-color: rgba(0, 229, 255, 1);
+    }
+}
+
+/* SVG Circular Progress Ring */
+.progress-ring {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    transform: rotate(-90deg); /* Start progress from 12 o'clock */
+    width: 63px;
+    height: 63px;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.skill-node:hover .progress-ring {
+    opacity: 1;
+}
+
+.progress-ring-circle-bg {
+    stroke: rgba(255, 255, 255, 0.03);
+}
+
+.progress-ring-circle {
+    stroke: var(--accent);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 0 4px var(--accent));
+}
+
+/* Center circle breathing and radial pulse glow styles */
+.center-breathing-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: centerBreathing 4s infinite ease-in-out;
+    transform-origin: center center;
+    z-index: 4;
+}
+
+@keyframes centerBreathing {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.skills-center-glow {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: radialPulse 6s infinite ease-in-out;
+}
+
+@keyframes radialPulse {
+    0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.85; }
+    100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.5; }
 }
 
 /* 9. ACHIEVEMENTS SECTION */

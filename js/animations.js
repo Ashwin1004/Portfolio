@@ -264,11 +264,10 @@ function initProjectsTimeline() {
    ========================================================================== */
 function initSkillsConnections() {
     const universe = document.querySelector('.skills-universe');
-    const svgContainer = document.getElementById('skillsConnectorSvg');
     const centerNode = document.querySelector('.skills-center');
     const skillNodes = document.querySelectorAll('.skill-node');
 
-    if (!universe || !svgContainer || !centerNode) return;
+    if (!universe || !centerNode) return;
 
     // Layout the nodes dynamically in a circle
     function layoutNodes() {
@@ -296,49 +295,54 @@ function initSkillsConnections() {
         });
     }
 
-    function drawLines() {
-        svgContainer.innerHTML = '';
-        
-        // Ensure nodes are positioned first
-        layoutNodes();
+    // Dynamic injection and smooth hover animations of SVG Progress Rings
+    skillNodes.forEach(node => {
+        const iconWrapper = node.querySelector('.skill-icon-wrapper');
+        if (iconWrapper) {
+            const r = 29;
+            const circ = 2 * Math.PI * r; // ~182.21
 
-        // Skip connection lines on mobile since they flow in grid
-        if (window.innerWidth < 768) return;
+            // Inject the SVG if it doesn't exist
+            if (!iconWrapper.querySelector('.progress-ring')) {
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('class', 'progress-ring');
+                svg.setAttribute('width', '63');
+                svg.setAttribute('height', '63');
+                svg.innerHTML = `
+                    <circle class="progress-ring-circle-bg" cx="31.5" cy="31.5" r="${r}" stroke-width="1.5" fill="transparent" />
+                    <circle class="progress-ring-circle" cx="31.5" cy="31.5" r="${r}" stroke-width="2" fill="transparent" 
+                            stroke-dasharray="${circ}" stroke-dashoffset="${circ}" />
+                `;
+                iconWrapper.appendChild(svg);
+            }
 
-        const rectUniverse = universe.getBoundingClientRect();
-        const rectCenter = centerNode.getBoundingClientRect();
-        
-        const centerX = (rectCenter.left + rectCenter.width / 2) - rectUniverse.left;
-        const centerY = (rectCenter.top + rectCenter.height / 2) - rectUniverse.top;
+            const circle = iconWrapper.querySelector('.progress-ring-circle');
+            const pct = parseInt(node.getAttribute('data-pct') || '80', 10);
+            const targetOffset = circ - (pct / 100) * circ;
 
-        skillNodes.forEach(node => {
-            const rectNode = node.getBoundingClientRect();
-            const nodeX = (rectNode.left + rectNode.width / 2) - rectUniverse.left;
-            const nodeY = (rectNode.top + rectNode.height / 2) - rectUniverse.top;
-
-            // Create SVG line
-            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line.setAttribute('x1', centerX);
-            line.setAttribute('y1', centerY);
-            line.setAttribute('x2', nodeX);
-            line.setAttribute('y2', nodeY);
-            line.setAttribute('class', 'skills-web-line');
-            
-            svgContainer.appendChild(line);
-
-            // Synchronize line opacity/color with node hover
             node.addEventListener('mouseenter', () => {
-                line.classList.add('active');
+                gsap.to(circle, {
+                    strokeDashoffset: targetOffset,
+                    duration: 0.6,
+                    ease: "power2.out",
+                    overwrite: "auto"
+                });
             });
+
             node.addEventListener('mouseleave', () => {
-                line.classList.remove('active');
+                gsap.to(circle, {
+                    strokeDashoffset: circ,
+                    duration: 0.4,
+                    ease: "power2.inOut",
+                    overwrite: "auto"
+                });
             });
-        });
-    }
+        }
+    });
 
     // Run initially & bind resize
-    setTimeout(drawLines, 500);
-    window.addEventListener('resize', drawLines);
+    setTimeout(layoutNodes, 500);
+    window.addEventListener('resize', layoutNodes);
 
     // Skills Section Reveal
     gsap.from(skillNodes, {
