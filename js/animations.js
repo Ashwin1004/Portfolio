@@ -33,15 +33,6 @@ function initLoader() {
 
     if (!loader || !loaderLine || !loaderTitle || !loaderStatus) return;
 
-    // List of status messages to cycle through
-    const statusMessages = [
-        'Loading Backend Architecture...',
-        'Loading AI Models...',
-        'Loading Distributed Systems...',
-        'Loading Computer Vision Engine...',
-        'Loading Portfolio Experience...'
-    ];
-
     const progressObj = { value: 0 };
     const loaderTimeline = gsap.timeline();
 
@@ -58,7 +49,7 @@ function initLoader() {
         ease: 'power2.out'
     });
 
-    // Animate line loading progress & cycle messages
+    // Animate line loading progress & update percentage text
     loaderTimeline.to(progressObj, {
         value: 100,
         duration: 2.8,
@@ -66,24 +57,7 @@ function initLoader() {
         onUpdate: () => {
             const val = Math.round(progressObj.value);
             loaderLine.style.width = `${val}%`;
-
-            // Calculate which message to show based on progress percentage
-            const msgIndex = Math.min(
-                Math.floor((val / 100) * statusMessages.length),
-                statusMessages.length - 1
-            );
-            
-            if (loaderStatus.textContent !== statusMessages[msgIndex]) {
-                gsap.to(loaderStatus, {
-                    opacity: 0,
-                    y: -5,
-                    duration: 0.15,
-                    onComplete: () => {
-                        loaderStatus.textContent = statusMessages[msgIndex];
-                        gsap.to(loaderStatus, { opacity: 1, y: 0, duration: 0.15 });
-                    }
-                });
-            }
+            loaderStatus.textContent = `${val}%`;
         },
         onComplete: () => {
             exitLoaderSequence();
