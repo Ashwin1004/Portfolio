@@ -264,10 +264,11 @@ function initProjectsTimeline() {
    ========================================================================== */
 function initSkillsConnections() {
     const universe = document.querySelector('.skills-universe');
+    const svgContainer = document.getElementById('skillsConnectorSvg');
     const centerNode = document.querySelector('.skills-center');
     const skillNodes = document.querySelectorAll('.skill-node');
 
-    if (!universe || !centerNode) return;
+    if (!universe || !svgContainer || !centerNode) return;
 
     // Layout the nodes dynamically in a circle
     function layoutNodes() {
@@ -292,6 +293,45 @@ function initSkillsConnections() {
             node.style.position = 'absolute';
             node.style.left = `calc(50% + ${x}px)`;
             node.style.top = `calc(50% + ${y}px)`;
+        });
+    }
+
+    function drawLines() {
+        svgContainer.innerHTML = '';
+        
+        // Ensure nodes are positioned first
+        layoutNodes();
+
+        // Skip connection lines on mobile since they flow in grid
+        if (window.innerWidth < 768) return;
+
+        const centerX = universe.offsetWidth / 2;
+        const centerY = universe.offsetHeight / 2;
+        const radius = 250;
+        const angleStep = (2 * Math.PI) / skillNodes.length;
+
+        skillNodes.forEach((node, index) => {
+            const angle = index * angleStep - Math.PI / 2;
+            const x = radius * Math.cos(angle);
+            const y = radius * Math.sin(angle);
+
+            // Create SVG line using precise mathematical coordinates
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', centerX);
+            line.setAttribute('y1', centerY);
+            line.setAttribute('x2', centerX + x);
+            line.setAttribute('y2', centerY + y);
+            line.setAttribute('class', 'skills-web-line');
+            
+            svgContainer.appendChild(line);
+
+            // Synchronize line opacity/color with node hover
+            node.addEventListener('mouseenter', () => {
+                line.classList.add('active');
+            });
+            node.addEventListener('mouseleave', () => {
+                line.classList.remove('active');
+            });
         });
     }
 
@@ -341,8 +381,8 @@ function initSkillsConnections() {
     });
 
     // Run initially & bind resize
-    setTimeout(layoutNodes, 500);
-    window.addEventListener('resize', layoutNodes);
+    setTimeout(drawLines, 500);
+    window.addEventListener('resize', drawLines);
 
     // Skills Section Reveal
     gsap.from(skillNodes, {
