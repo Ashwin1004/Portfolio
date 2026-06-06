@@ -53,6 +53,29 @@ document.addEventListener('DOMContentLoaded', () => {
             this.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="48" fill="%230a0a0c" stroke="%2300E5FF" stroke-width="2"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="%2300E5FF" font-family="sans-serif" font-weight="bold" font-size="28">AMS</text></svg>`;
         });
     }
+
+    // 7. EMAIL CLICK-TO-COPY INTERACTION
+    const emailBtn = document.getElementById('emailBtn');
+    if (emailBtn) {
+        emailBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = 'ashwinms1004@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const titleEl = emailBtn.querySelector('.channel-title');
+                const originalText = titleEl.textContent;
+                titleEl.textContent = 'Copied to clipboard!';
+                emailBtn.style.borderColor = 'var(--accent)';
+                
+                setTimeout(() => {
+                    titleEl.textContent = originalText;
+                    emailBtn.style.borderColor = '';
+                }, 2000);
+            }).catch(err => {
+                // Fail-safe fallback to mailto link
+                window.location.href = emailBtn.getAttribute('href');
+            });
+        });
+    }
 });
 
 /* ==========================================================================
