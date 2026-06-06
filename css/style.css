@@ -14,11 +14,11 @@
     --text-secondary: #94A3B8;
     --text-muted: #475569;
     
-    --accent: #00C8FF;
-    --accent-secondary: #8B5CF6;
+    --accent: #00E5FF;
+    --accent-secondary: #0088FF;
     
-    --accent-rgb: 0, 200, 255;
-    --accent-secondary-rgb: 139, 92, 246;
+    --accent-rgb: 0, 229, 255;
+    --accent-secondary-rgb: 0, 136, 255;
 
     --font-heading: 'Syne', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
@@ -361,11 +361,56 @@ p {
 }
 
 .hero-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
     z-index: 2;
 }
 
 .hero-content {
-    max-width: 900px;
+    max-width: 700px;
+}
+
+.hero-cube-wrapper {
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#heroCubeCanvas {
+    width: 100%;
+    height: 100%;
+    max-width: 450px;
+    max-height: 450px;
+    display: block;
+}
+
+@media (max-width: 1024px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+        gap: 30px;
+        padding-top: 80px;
+    }
+    .hero-cube-wrapper {
+        height: 320px;
+        order: -1;
+    }
+    .hero-content {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-actions {
+        justify-content: center;
+    }
 }
 
 .hero-title {
@@ -752,21 +797,21 @@ p {
 }
 
 .project-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background: rgba(10, 10, 12, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 40px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(var(--accent-rgb), 0.2);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 15px 45px rgba(0, 229, 255, 0.15), 0 0 20px rgba(0, 229, 255, 0.08);
 }
 
 .project-index {
@@ -968,13 +1013,6 @@ p {
     width: 100px;
 }
 
-/* Subtle organic floating animation applied to the icons */
-@keyframes iconFloat {
-    0% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-2px) translateX(1px); }
-    100% { transform: translateY(0) translateX(0); }
-}
-
 .skill-icon-wrapper {
     width: 55px;
     height: 55px;
@@ -986,14 +1024,8 @@ p {
     align-items: center;
     transition: var(--transition-smooth);
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    animation: iconFloat 6s ease-in-out infinite;
     position: relative;
 }
-
-.skill-node:nth-child(2n) .skill-icon-wrapper { animation-delay: -1.2s; animation-duration: 7.5s; }
-.skill-node:nth-child(3n) .skill-icon-wrapper { animation-delay: -2.4s; animation-duration: 8.5s; }
-.skill-node:nth-child(4n) .skill-icon-wrapper { animation-delay: -3.6s; animation-duration: 5.5s; }
-.skill-node:nth-child(5n) .skill-icon-wrapper { animation-delay: -4.8s; animation-duration: 6.5s; }
 
 .skill-icon-wrapper i {
     width: 22px;
@@ -1014,7 +1046,7 @@ p {
 }
 
 .skill-node:hover {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(1.05);
 }
 
 .skill-node:hover .skill-icon-wrapper {
@@ -1712,3 +1744,4 @@ p {
     font-size: 0.8rem;
     color: var(--text-muted);
 }
+
