@@ -199,13 +199,40 @@ function initGithubRepos() {
     // Filter conditions: exclude Ashwin1004 profile self-repo and MaddanPortfolio
     const excludedRepos = ['maddanportfolio', 'ashwin1004', 'ashwin2004'];
 
-    fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=30`)
+    fetch(`https://api.github.com/users/${username}/repos`)
         .then(response => {
             if (!response.ok) throw new Error('Network response not ok');
             return response.json();
         })
         .then(data => {
-            // Filter and sort by stars/updated
+            // Update stats dynamically
+            const totalReposVal = document.getElementById('github-total-repos');
+            const totalStarsVal = document.getElementById('github-total-stars');
+            const mostStarredVal = document.getElementById('github-most-starred');
+
+            if (data && data.length > 0) {
+                const totalRepos = data.length;
+                const totalStars = data.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+                
+                // Find the most starred repository
+                let mostStarred = null;
+                let maxStars = -1;
+                data.forEach(repo => {
+                    if ((repo.stargazers_count || 0) > maxStars) {
+                        maxStars = repo.stargazers_count;
+                        mostStarred = repo;
+                    }
+                });
+
+                if (totalReposVal) totalReposVal.textContent = totalRepos;
+                if (totalStarsVal) totalStarsVal.textContent = totalStars;
+                if (mostStarredVal && mostStarred) {
+                    mostStarredVal.textContent = mostStarred.name;
+                    mostStarredVal.title = mostStarred.name;
+                }
+            }
+
+            // Filter and sort by stars/updated for grid
             const filteredRepos = data
                 .filter(repo => !excludedRepos.includes(repo.name.toLowerCase()))
                 .slice(0, 6); // Take top 6

@@ -168,7 +168,7 @@ function exitLoaderSequence() {
         ease: 'power3.out'
     }, '-=0.4');
 
-    exitTimeline.from('.hero-tagline, .hero-actions, .hero-scroll-prompt', {
+    exitTimeline.from('.hero-badges, .hero-subtitle, .hero-tagline, .hero-actions, .hero-scroll-prompt', {
         opacity: 0,
         y: 30,
         duration: 0.8,
