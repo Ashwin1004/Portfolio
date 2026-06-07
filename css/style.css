@@ -325,6 +325,23 @@ p {
     box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.15);
 }
 
+.btn-header-hire {
+    border: 1.5px solid rgba(var(--accent-rgb), 0.3);
+    background: rgba(var(--accent-rgb), 0.02);
+    color: var(--accent);
+    border-radius: 30px;
+    padding: 10px 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.btn-header-hire:hover {
+    border-color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.08);
+    box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.2);
+}
+
 /* Mobile Menu Button styles */
 .mobile-menu-btn {
     display: none;
@@ -337,10 +354,20 @@ p {
 /* 5. HERO SECTION */
 .hero-section {
     height: 100vh;
-    min-height: 700px;
+    min-height: 500px;
     display: flex;
+    justify-content: center;
     align-items: center;
+    text-align: left;
     padding: 0;
+    background-color: #050505;
+    background-image: 
+        linear-gradient(rgba(0, 229, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.015) 1px, transparent 1px);
+    background-size: 55px 55px;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-bg-canvas-wrapper {
@@ -361,106 +388,450 @@ p {
 }
 
 .hero-container {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
-    gap: 40px;
     width: 100%;
     z-index: 2;
 }
 
-.hero-content {
-    max-width: 700px;
-}
-
-.hero-cube-wrapper {
-    width: 100%;
-    height: 450px;
-    display: flex;
-    justify-content: center;
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 80px;
     align-items: center;
-    position: relative;
-}
-
-#heroCubeCanvas {
     width: 100%;
-    height: 100%;
-    max-width: 450px;
-    max-height: 450px;
-    display: block;
 }
 
-@media (max-width: 1024px) {
-    .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-        justify-items: center;
-        gap: 30px;
-        padding-top: 80px;
-    }
-    .hero-cube-wrapper {
-        height: 320px;
-        order: -1;
-    }
-    .hero-content {
-        max-width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .hero-actions {
-        justify-content: center;
-    }
+.hero-content.hero-minimal {
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    margin-top: -30px; /* Moves left block slightly upward to align with card */
 }
 
-.hero-title {
-    font-size: clamp(3.5rem, 8vw, 6.2rem);
-    line-height: 0.9;
-    margin-bottom: 25px;
-    letter-spacing: -0.03em;
+.hero-name-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4.5vw, 3.8rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.31);
+    transition: text-shadow 0.3s ease;
     white-space: nowrap;
 }
 
-.hero-badges {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 30px;
+.hero-name-title:hover {
+    text-shadow: 0 0 16px rgba(0, 229, 255, 0.45);
 }
 
-.hero-badge {
-    padding: 8px 20px;
-    border-radius: 30px;
-    font-size: 0.8rem;
+.hero-role-line {
+    font-family: var(--font-body);
+    font-size: clamp(1.1rem, 2.2vw, 1.45rem);
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.badge-cyan {
-    border: 1px solid rgba(0, 229, 255, 0.25);
     color: var(--accent);
-    background: rgba(0, 229, 255, 0.04);
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-.badge-purple {
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    color: var(--accent-secondary);
-    background: rgba(139, 92, 246, 0.04);
+.role-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.8);
+    margin: 0 14px;
 }
 
-.hero-subtitle {
-    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-    font-weight: 700;
-    margin-bottom: 15px;
-    letter-spacing: -0.01em;
-}
-
-.hero-tagline {
-    font-size: clamp(1rem, 2vw, 1.15rem);
-    color: var(--text-secondary);
-    margin-bottom: 40px;
-    max-width: 650px;
+.hero-tagline-minimal-v2 {
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
     font-weight: 400;
+    color: #a0aec0;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    max-width: 550px;
+}
+
+.hero-right {
+    width: 420px; /* Exact manual width */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+/* Hologram Hanging Setup */
+.hologram-id-setup {
+    position: absolute;
+    top: -320px; /* Shifted upward to align the photo center with the subtitle */
+    right: 5%; /* Far right placement */
+    width: 320px; /* Matched to badge-card width */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.hologram-id-setup * {
+    pointer-events: none;
+}
+
+.badge-card {
+    pointer-events: auto;
+}
+
+.badge-swing {
+    position: absolute;
+    top: 0; /* Pivot at the top edge of the viewport */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center; /* Rotation occurs from top center */
+    animation: swing 7s ease-in-out infinite; /* 7s pendulum swing */
+}
+
+.hologram-wire.hologram-cable {
+    width: 2px; /* Thin cyan suspension wire */
+    height: 230px; /* Adjusted height to keep card in viewport and aligned with header */
+    min-height: 40px;
+    background: linear-gradient(to bottom, var(--accent), rgba(0, 229, 255, 0.75));
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+    flex-shrink: 0;
+}
+
+.hologram-hook {
+    width: 8px;
+    height: 16px;
+    border: 2px solid #cbd5e1; /* Minimal metallic hook */
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    background: transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(255, 255, 255, 0.3);
+    margin-top: -3px;
+    z-index: 5;
+    flex-shrink: 0;
+}
+
+.hologram-ring.chrome-ring {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #cbd5e1; /* Minimal metallic ring */
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4);
+    margin-top: -3px;
+    margin-bottom: -2px; /* Connects hook/ring directly to the card */
+    z-index: 6;
+    flex-shrink: 0;
+}
+
+.badge-card {
+    width: 320px; /* Clean standard card width */
+    height: 430px; /* Clean standard card height */
+    top: -40px; /* Spacing offset */
+    border-radius: 24px;
+    border: 2px solid rgba(0, 229, 255, 0.5); /* Thin cyan glowing border */
+    background: linear-gradient(135deg, rgba(0, 180, 216, 0.12) 0%, rgba(0, 119, 182, 0.05) 50%, rgba(3, 4, 94, 0.2) 100%); /* Transparent glass material */
+    backdrop-filter: blur(25px) saturate(120%);
+    -webkit-backdrop-filter: blur(25px) saturate(120%);
+    box-shadow: 
+        0 0 25px rgba(0, 229, 255, 0.2), /* Soft neon cyan outer glow */
+        0 0 50px rgba(0, 229, 255, 0.08),
+        inset 0 0 15px rgba(0, 229, 255, 0.15), /* Inner rim light glow */
+        inset 0 1px 2px rgba(255, 255, 255, 0.4);
+    padding: 12px;
+    position: relative;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.badge-card::before {
+    content: '';
+    position: absolute;
+    top: -15%;
+    left: -15%;
+    width: 130%;
+    height: 130%;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.22) 0%, rgba(0, 229, 255, 0.06) 55%, transparent 80%); /* Soft glow aura */
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(35px);
+    opacity: 0.95;
+    transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+.hologram-card-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(4, 12, 18, 0.7); /* Clean transparent glass background */
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(0, 229, 255, 0.12);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    animation: card-float-3d 5.5s infinite ease-in-out; /* Gentle 5.5s vertical float effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.badge-photo {
+    width: 100%;
+    height: 88%; /* Photo occupies 85–90% of frame height */
+    padding: 0;
+    margin: 0;
+    object-fit: contain; /* Perfect center containment */
+    filter: grayscale(8%) contrast(110%) brightness(98%);
+    opacity: 0.92;
+    transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+.badge-scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.85), transparent);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+    opacity: 0.6;
+    z-index: 5;
+    pointer-events: none;
+    animation: scanline-move 6s linear infinite;
+}
+
+.badge-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent);
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.badge-particle.p1 { top: 20%; left: -15px; animation: particle-float 4s ease-in-out infinite; }
+.badge-particle.p2 { top: 70%; right: -20px; animation: particle-float 5s ease-in-out infinite 1s; }
+.badge-particle.p3 { bottom: 10%; left: -25px; animation: particle-float 6s ease-in-out infinite 0.5s; }
+.badge-particle.p4 { top: 40%; right: -10px; animation: particle-float 4.5s ease-in-out infinite 1.5s; }
+
+.hologram-shimmer {
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.18), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hologram-shadow {
+    width: 150px;
+    height: 10px;
+    background: radial-gradient(ellipse, rgba(0, 229, 255, 0.2) 0%, transparent 75%); /* Floating Y shadow */
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: -2;
+    animation: shadow-shift 7.5s infinite ease-in-out;
+}
+
+/* Hover effects */
+.hologram-id-setup:hover .badge-photo {
+    opacity: 1;
+    filter: grayscale(0%) contrast(105%) brightness(100%);
+}
+
+.hologram-id-setup:hover .hologram-shimmer {
+    animation: shimmer-swipe 1.8s infinite linear; /* Glass reflection sweep */
+}
+
+/* Scroll Down Indicator */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.mouse-icon {
+    width: 20px;
+    height: 32px;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+}
+
+.mouse-wheel {
+    width: 4px;
+    height: 6px;
+    background-color: var(--accent);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: mouse-scroll 1.6s infinite ease-in-out;
+    box-shadow: 0 0 6px rgba(0, 229, 255, 0.8);
+}
+
+.scroll-text {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-shadow: 0 0 6px rgba(0, 229, 255, 0.3);
+}
+
+/* Keyframe animations */
+@keyframes swing {
+    0% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+    100% { transform: rotate(-2deg); }
+}
+
+@keyframes card-float-3d {
+    0%, 100% {
+        transform: translateY(-4px); /* Perfectly vertical, no 3D tilt */
+    }
+    50% {
+        transform: translateY(4px);
+    }
+}
+
+@keyframes shadow-shift {
+    0%, 100% {
+        transform: translateX(-60%) scaleX(0.9);
+        opacity: 0.75;
+    }
+    50% {
+        transform: translateX(-40%) scaleX(1.1);
+        opacity: 1;
+    }
+}
+
+@keyframes shimmer-swipe {
+    0% {
+        left: -150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+@keyframes mouse-scroll {
+    0% {
+        top: 6px;
+        opacity: 1;
+    }
+    50% {
+        top: 14px;
+        opacity: 0.3;
+    }
+    100% {
+        top: 6px;
+        opacity: 1;
+    }
+}
+
+@keyframes scanline-move {
+    0% {
+        top: 0%;
+    }
+    50%, 100% {
+        top: 100%;
+    }
+}
+
+@keyframes particle-float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-12px) scale(1.3);
+        opacity: 0.95;
+        box-shadow: 0 0 12px var(--accent);
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    .hero-content.hero-minimal {
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+        margin-top: 0;
+    }
+    .hero-right {
+        justify-content: center;
+        margin-top: 20px;
+        width: 100%;
+    }
+    .hologram-id-setup {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 270px;
+        height: 380px;
+        margin: 20px auto 0 auto;
+    }
+    .badge-swing {
+        position: relative;
+        top: auto;
+        height: 100%;
+    }
+    .badge-card {
+        width: 250px;
+        height: 330px;
+        border-radius: 18px;
+        padding: 12px;
+        top: 0;
+    }
+    .hologram-card-inner {
+        border-radius: 10px;
+    }
+    .hologram-wire {
+        height: 80px;
+    }
+    .hologram-shadow {
+        width: 160px;
+        bottom: -25px;
+    }
 }
 
 .hero-actions {
@@ -573,41 +944,7 @@ p {
     transform: translateY(2px) scale(1.1);
 }
 
-/* Scroll down prompt */
-.hero-scroll-prompt {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--text-secondary);
-}
-
-.mouse-icon {
-    width: 24px;
-    height: 40px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    position: relative;
-}
-
-.mouse-dot {
-    width: 4px;
-    height: 8px;
-    background: var(--accent);
-    border-radius: 2px;
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: mouse-scroll 1.6s infinite ease-in-out;
-}
+/* Scroll down prompt removed for minimal design */
 
 /* 6. ABOUT ME SECTION */
 .about-section {
@@ -624,15 +961,15 @@ p {
 
 .about-layout {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 60px;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
     align-items: start;
 }
 
 .about-content-left {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 
 .about-large-text {
@@ -660,18 +997,22 @@ p {
 
 .about-content-right {
     display: flex;
-    justify-content: flex-end;
+    gap: 16px;
+    justify-content: flex-start;
+    width: 100%;
 }
 
 .education-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 20px;
-    padding: 40px;
-    width: 100%;
-    max-width: 420px;
+    padding: 24px;
+    flex: 1;
+    min-width: 0;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
 }
 
 .card-label {
@@ -693,15 +1034,25 @@ p {
 
 .education-card h3 {
     font-family: var(--font-body);
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 12px;
-    line-height: 1.4;
+    margin-bottom: 15px;
+    line-height: 1.35;
+    color: var(--text-primary);
 }
 
 .education-card p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 4px;
+}
+
+.education-card .card-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: auto;
+    padding-top: 10px;
 }
 
 /* 7. PROJECTS TIMELINE */

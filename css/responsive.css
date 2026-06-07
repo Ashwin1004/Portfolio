@@ -93,12 +93,23 @@
         gap: 35px;
     }
 
+    .about-content-right {
+        flex-direction: column !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    .education-card {
+        max-width: 420px !important;
+        width: 100% !important;
+    }
+
     .about-details-column {
         gap: 20px;
     }
 
     /* Navigation / Hamburger actions */
-    .main-nav, .header-cta, .btn-header-cta {
+    .main-nav, .header-cta, .btn-header-cta, .btn-header-hire {
         display: none !important; /* hide standard links */
     }
 

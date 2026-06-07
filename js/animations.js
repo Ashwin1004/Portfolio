@@ -134,21 +134,33 @@ function exitLoaderSequence() {
     }, '-=0.8');
 
     // 6. Reveal Hero section elements staggeringly
-    exitTimeline.from('.hero-title span', {
+    exitTimeline.from('.hero-name-title', {
         opacity: 0,
-        y: 80,
-        duration: 0.9,
-        stagger: 0.15,
+        y: 40,
+        duration: 1.0,
         ease: 'power3.out'
     }, '-=0.4');
 
-    exitTimeline.from('.hero-badges, .hero-subtitle, .hero-tagline, .hero-actions, .hero-scroll-prompt', {
+    exitTimeline.from('.hero-role-line', {
         opacity: 0,
-        y: 30,
+        y: 20,
         duration: 0.8,
-        stagger: 0.1,
+        ease: 'power2.out'
+    }, '-=0.6');
+
+    exitTimeline.from('.hero-tagline-minimal-v2', {
+        opacity: 0,
+        y: 15,
+        duration: 0.8,
         ease: 'power2.out'
     }, '-=0.5');
+
+    exitTimeline.from('.hologram-card', {
+        opacity: 0,
+        scale: 0.95,
+        duration: 1.0,
+        ease: 'power2.out'
+    }, '-=0.6');
 
     // 7. Fade in navigation header
     exitTimeline.from('.main-header', {

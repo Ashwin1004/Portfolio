@@ -109,10 +109,7 @@
                 </ul>
             </nav>
             <div class="header-buttons-group" style="display: flex; align-items: center; gap: 15px;">
-                <a href="assets/Ashwin_M_S_Resume.pdf" download class="btn btn-header-resume clickable magnetic" data-strength="15">
-                    <span>Resume</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download" style="width: 14px; height: 14px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                </a>
+                <a href="#contact" class="btn btn-header-hire clickable magnetic" data-strength="15">Hire Me</a>
                 <a href="#contact" class="btn btn-header-cta clickable magnetic" data-strength="15">Get In Touch</a>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
@@ -143,28 +140,40 @@
                 <canvas id="particleCanvas"></canvas>
             </div>
             <div class="hero-container container">
-                <div class="hero-content">
-                    <h1 class="hero-title font-futuristic">
-                        <span>ASHWIN M S</span>
-                    </h1>
-                    <div class="hero-badges">
-                        <span class="hero-badge badge-cyan">BACKEND ENGINEER • AI/ML DEVELOPER</span>
+                <div class="hero-grid">
+                    <div class="hero-content hero-minimal">
+                        <h1 class="hero-name-title font-futuristic">ASHWIN M S</h1>
+                        <div class="hero-role-line">Backend Engineer <span class="role-dot"></span> AI/ML Developer</div>
+                        <div class="hero-tagline-minimal-v2">
+                            Building scalable backend systems <br>and intelligent software solutions.
+                        </div>
                     </div>
-                    <h2 class="hero-subtitle">
-                        Building scalable backend systems <br>and intelligent AI solutions.
-                    </h2>
-                    <p class="hero-tagline">
-                        Passionate about creating technology that delivers real-world impact.
-                    </p>
-
+                    <div class="hero-right">
+                        <div class="hologram-id-setup">
+                            <!-- Swing assembly -->
+                            <div class="badge-swing">
+                                <div class="hologram-wire hologram-cable"></div>
+                                <div class="hologram-hook"></div>
+                                <div class="hologram-ring chrome-ring"></div>
+                                <div class="badge-card">
+                                    <div class="hologram-card-inner">
+                                        <div class="hologram-shimmer"></div>
+                                        <img src="assets/images/profile.jpg" alt="Ashwin M S" class="badge-photo">
+                                    </div>
+                                </div>
+                                <div class="hologram-shadow"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
-            <div class="hero-scroll-prompt">
+            
+            <!-- Scroll Down Indicator -->
+            <div class="scroll-down-indicator">
                 <div class="mouse-icon">
-                    <span class="mouse-dot"></span>
+                    <div class="mouse-wheel"></div>
                 </div>
-                <span>Scroll Down</span>
+                <span class="scroll-text">SCROLL DOWN</span>
             </div>
         </section>
 
@@ -175,17 +184,41 @@
                 <div class="about-layout">
                     <div class="about-content-left">
                         <div class="about-large-text">
-                            I am a <span class="text-highlight-cyan">Java Backend Engineer</span> and <span class="text-highlight-purple">AI/ML Developer</span> building scalable systems and intelligent software.
+                            I'm a Full-Stack Developer who specialises in AI-powered backend systems — turning complex ideas into production-ready software.
                         </div>
                         <p class="about-paragraph">
-                            I design high-performance architectures, develop robust server-side applications, and build generative AI models. Currently pursuing my B.Tech in Computer and Communication Engineering, I bridge the gap between reliable engineering and modern machine learning.
+                            My work sits at the intersection of backend engineering and machine learning. I've built distributed systems with <strong>Spring Boot & Kafka</strong>, designed RAG pipelines using <strong>pgvector & Groq Llama-3</strong>, and trained <strong>CNN-LSTM models</strong> for medical signal classification — all from scratch during my undergrad years.
                         </p>
+                        <p class="about-paragraph">
+                            Right now I'm in my 3rd year at Amrita School of Engineering, Chennai, working toward my B.Tech in Computer and Communication Engineering (graduating May 2027). Outside coursework, I compete in hackathons — I was a <strong>finalist at IIT Madras Shaastra'25</strong> and took <strong>3rd place at Ingenium</strong> at Amrita.
+                        </p>
+                        <p class="about-paragraph">
+                            I'm actively looking for <strong>backend / AI internships</strong> where I can contribute to real systems, learn from strong engineers, and ship things that matter.
+                        </p>
+                        <div class="about-actions" style="margin-top: 30px;">
+                            <a href="assets/Ashwin_M_S_Resume.pdf" download class="btn btn-header-resume clickable magnetic" data-strength="15">
+                                <span>Resume</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download" style="width: 14px; height: 14px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                            </a>
+                        </div>
                     </div>
                     <div class="about-content-right">
                         <div class="education-card">
                             <span class="card-label label-cyan">Education</span>
-                            <h3>B.Tech Computer and Communication Engineering</h3>
-                            <p>Amrita School of Engineering (Graduation 2027)</p>
+                            <h3>B.Tech —<br>Computer and<br>Communication<br>Engineering</h3>
+                            <p class="card-desc">Amrita School of Engineering, Chennai</p>
+                            <p class="card-sub">Expected May 2027</p>
+                        </div>
+                        <div class="education-card">
+                            <span class="card-label label-cyan">Previously</span>
+                            <h3>Higher<br>Secondary<br>(12th Grade)</h3>
+                            <p class="card-desc">Velammal Vidyalaya School, Karur</p>
+                            <p class="card-sub">Completed 2023</p>
+                        </div>
+                        <div class="education-card">
+                            <span class="card-label label-cyan">Currently<br>Open To</span>
+                            <h3 style="color: var(--accent);">Backend &<br>AI<br>Internships<br>— 2025</h3>
+                            <p class="card-desc">Remote or Chennai-based · Full-time or part-time</p>
                         </div>
                     </div>
                 </div>
@@ -633,6 +666,15 @@
                                 <i data-lucide="arrow-right" class="channel-arrow"></i>
                             </a>
 
+                            <!-- Phone -->
+                            <a href="tel:+918825600114" class="channel-card clickable magnetic" data-strength="15">
+                                <div class="channel-details-horizontal">
+                                    <i data-lucide="phone" class="channel-icon"></i>
+                                    <span class="channel-title">Phone (+91 88256 00114)</span>
+                                </div>
+                                <i data-lucide="arrow-right" class="channel-arrow"></i>
+                            </a>
+
                             <!-- GitHub -->
                             <a href="https://github.com/Ashwin1004" target="_blank" class="channel-card clickable magnetic" data-strength="15">
                                 <div class="channel-details-horizontal">
@@ -691,8 +733,7 @@
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p>&copy; 2026 Ashwin M S. All rights reserved.</p>
-                    <p>Designed for low-latency & system scale.</p>
+                    <p>&copy; 2026. All rights reserved.</p>
                 </div>
             </div>
         </footer>
